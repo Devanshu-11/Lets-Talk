@@ -2,6 +2,7 @@
 pragma solidity ^0.8.26;
 
 contract ChatApp{
+    
     // each User has a name and a list of friends
     struct user{
         string name;
@@ -21,6 +22,14 @@ contract ChatApp{
         string msg;
     }
 
+    // to save all the users
+    struct AllUsersStruck{
+        string name;
+        address accountAddress;
+    }
+
+    AllUsersStruck[] getAllUsers;
+
     // Mapping
     mapping(address=>user) userList;
     mapping(bytes32=>message[]) allMessages;
@@ -34,6 +43,7 @@ contract ChatApp{
     function createAccount(string calldata name) external{
         require(checkUserExists(msg.sender)==false,'User already exists');
         require(bytes(name).length>0,'User name cannot be empty');
+        getAllUsers.push(AllUsersStruck(name,msg.sender));
         userList[msg.sender].name=name;
     }
 
@@ -85,7 +95,6 @@ contract ChatApp{
         return userList[msg.sender].friendList;
     }
 
-
     // get chat code
     function _getChatCode(address publicKey1, address publicKey2) internal pure returns(bytes32){
 
@@ -95,5 +104,27 @@ contract ChatApp{
         }else{
             return keccak256(abi.encodePacked(publicKey2,publicKey1));
         }
+    }
+
+    // send Message
+    function sendMessage(address friend_key, string calldata _msg) external{
+        require(checkUserExists(msg.sender)==true,'Create an account first');
+        require(checkUserExists(friend_key)==true,'User is not registered');
+        require(checkAlreadyFriends(msg.sender,friend_key)==true,'You are not friend');
+
+        bytes32 chatCode= _getChatCode(msg.sender, friend_key);
+        message memory newMsg= message(msg.sender, block.timestamp, _msg);
+        allMessages[chatCode].push(newMsg);
+    }
+
+    // read messages
+    function readMessages(address friend_key) external view returns (message[] memory) {
+        bytes32 chatCode = _getChatCode(msg.sender,friend_key);
+        return allMessages[chatCode];
+    }
+
+    // to get all the users
+    function getAllAppUsers() public view returns(AllUsersStruck[] memory){
+        return getAllUsers;
     }
 }
