@@ -46,7 +46,7 @@ export const ChatAppProvider=({children})=>{
             setUserLists(userList);
 
         }catch(error){
-            setError('Please install and connect your wallet');
+            setError('Wallet is not connected, Please install and connect your wallet');
         }
     }
 
@@ -62,7 +62,7 @@ export const ChatAppProvider=({children})=>{
             setFriendMsg(read);
 
         }catch(error){
-            setError('Currently You have no message');
+            setError('You currently have no messages from this friend');
         }
     }
 
@@ -70,7 +70,7 @@ export const ChatAppProvider=({children})=>{
     const createAccount=async({name, accountAddress})=>{
         try{
             if(!name||!accountAddress){
-                return setError("In this, name and account address must be there, please reload the browser");
+                return setError("Both name and account address are required to create an account, Please reload the browser");
             }
 
             const contract=await connectingWithTheContract();
@@ -89,7 +89,7 @@ export const ChatAppProvider=({children})=>{
     const addFriends=async({accountAddress, name})=>{
         try{    
             if(!name||!accountAddress){
-                return setError("In this, name and account address must be there, please reload the browser");
+                return setError("Both name and account address are required to add a friend, Please reload the browser");
             }
 
             const contract=await connectingWithTheContract();
@@ -110,7 +110,7 @@ export const ChatAppProvider=({children})=>{
         try{
 
             if(!msg|| !address){
-                return setError("Please Enter the message or the address and try again");
+                return setError("Both a message and a valid address are required to send a message, Please try again");
             }
 
             const contract=await connectingWithTheContract();
@@ -135,12 +135,12 @@ export const ChatAppProvider=({children})=>{
             setCurrentUserAddress(userAddress);
 
         }catch(error){
-            setError('Please reload and try again');
+            setError('Error fetching user information, Please reload and try again');
         }
     }
 
     return(
-        <ChatAppContext.Provider value={{readMessage, createAccount, addFriends, sendMessage, readUser,account, userName, friendLists, friendMsg, loading, userLists, error, currentUserName, currentUserAddress}}>
+        <ChatAppContext.Provider value={{readMessage, createAccount, addFriends, sendMessage, readUser,account, userName, friendLists, friendMsg, loading, userLists, error, currentUserName, currentUserAddress, checkIfWalletConnected, connectWallet, connectingWithTheContract}}>
             {children}
         </ChatAppContext.Provider>
     )
