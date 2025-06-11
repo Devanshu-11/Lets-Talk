@@ -1,7 +1,7 @@
 /* Base Styles */
 .NavBar {
     width: 100%;
-    background: linear-gradient(90deg, #4facfe 0%, #779d9e 100%); /* cool gradient blue */
+    background: linear-gradient(90deg, #4facfe 0%, #779d9e 100%); /* smooth blue gradient */
     color: #fff;
     padding: 20px 30px;
     box-sizing: border-box;
@@ -11,14 +11,14 @@
     z-index: 100;
 }
 
-/* Flex container */
+/* Flex container for nav content */
 .NavBar_box {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-/* Right side container */
+/* Right side container holding menu and buttons */
 .NavBar_box_right {
     display: flex;
     align-items: center;
@@ -31,6 +31,7 @@
     gap: 24px;
 }
 
+/* Individual menu item */
 .NavBar_box_right_menu_items {
     padding: 14px 20px;
     border-radius: 30px;
@@ -38,7 +39,7 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: white;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease, transform 0.2s ease;
     user-select: none;
     display: flex;
@@ -46,13 +47,15 @@
     justify-content: center;
 }
 
+/* Hover and active state for menu items */
 .NavBar_box_right_menu_items:hover,
-.active_btn {
+.NavBar_box_right_menu_items.active_btn {
     background-color: rgba(255 255 255 / 0.3);
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Link inside menu item */
 .NavBar_box_right_menu_items_link {
     color: white;
     text-decoration: none;
@@ -72,14 +75,16 @@
     box-shadow: 0 6px 14px rgba(0, 119, 255, 0.3);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
+    white-space: nowrap; /* prevent text wrap */
 }
 
+/* Hover effect for connect button */
 .NavBar_box_right_connect button:hover {
     background-color: #e6f0ff;
     box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
 }
 
-/* Hamburger Icon */
+/* Hamburger icon for mobile */
 .NavBar_box_right_open {
     display: none;
     font-size: 30px;
@@ -87,28 +92,29 @@
     color: white;
     transition: transform 0.3s ease;
     user-select: none;
+    padding: 4px;
 }
 
+/* Rotate effect on hover */
 .NavBar_box_right_open:hover {
     transform: rotate(90deg);
 }
 
-/* Mobile Menu - slide down */
+/* Mobile Menu - dropdown panel */
 .mobile_menu {
     position: absolute;
     top: 70px;
     right: 30px;
-    background: #4facfe;
     background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     width: 240px;
     border-radius: 12px;
-    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     z-index: 1500;
     padding: 15px 0;
     animation: slideDown 0.35s ease forwards;
 }
 
-/* Animation for dropdown */
+/* Slide down animation */
 @keyframes slideDown {
     from {
         opacity: 0;
@@ -120,6 +126,7 @@
     }
 }
 
+/* Each mobile menu item */
 .mobile_menu_items {
     padding: 14px 24px;
     cursor: pointer;
@@ -133,13 +140,15 @@
     user-select: none;
 }
 
+/* Hover & active states for mobile menu items */
 .mobile_menu_items:hover,
-.active_btn {
+.mobile_menu_items.active_btn {
     background-color: rgba(255 255 255 / 0.3);
     transform: scale(1.05);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
+/* Links inside mobile menu */
 .mobile_menu_items_link {
     color: white;
     text-decoration: none;
@@ -147,12 +156,13 @@
     width: 100%;
 }
 
-/* Close Menu Button */
+/* Close menu button container */
 .mobile_menu_btn {
     margin-top: 14px;
     text-align: center;
 }
 
+/* Close menu button style */
 .mobile_menu_btn button {
     background-color: #fff;
     color: #0077ff;
@@ -165,19 +175,23 @@
     box-shadow: 0 6px 14px rgba(0, 119, 255, 0.3);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     user-select: none;
+    white-space: nowrap;
 }
 
+/* Hover effect on close button */
 .mobile_menu_btn button:hover {
     background-color: #e6f0ff;
     box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
 }
 
-/* Responsive Layout */
+/* Responsive behavior */
 @media screen and (max-width: 768px) {
+    /* Hide desktop menu */
     .NavBar_box_right_menu {
         display: none;
     }
 
+    /* Show hamburger icon */
     .NavBar_box_right_open {
         display: block;
     }

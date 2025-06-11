@@ -2,6 +2,8 @@ import React,{useContext, useEffect, useState} from "react";
 import './NavBar.css';
 import {ChatAppContext} from "../../Context/ChatAppContext.jsx";
 import {Link} from "react-router-dom";
+import Error from '../Error/Error.jsx';
+import Model from "../Model/Model.jsx";
 
 const NavBar=()=>{
 
@@ -13,23 +15,23 @@ const NavBar=()=>{
         },
         {
             menu: "Chat",
-            link: "/chat",
+            link: "/",
         },
         {
             menu: "Contact",
-            link: "/contact",
+            link: "/",
         },
         {
             menu: "Setting",
-            link: "/setting",
+            link: "/",
         },
         {
             menu: "Faqs",
-            link: "/faqs",
+            link: "/",
         },
         {
             menu: "Terms of use",
-            link: "/termsofuse",
+            link: "/",
         }
     ]
 
@@ -39,7 +41,7 @@ const NavBar=()=>{
     const [openModel, setOpenModel]= useState(false);
 
     // get the context
-    const {account, userName,connectWallet}=useContext(ChatAppContext);
+    const {account, userName,connectWallet, createAccount, error}=useContext(ChatAppContext);
 
     return(
         <>
@@ -99,6 +101,24 @@ const NavBar=()=>{
                     </div>
                 </div>
             </div>
+
+            {/* Model Component */}
+            {openModel&&(
+                <div className="model_box">
+
+                    <Model 
+                        openBox={setOpenModel} 
+                        title="Welcome To" 
+                        head="Chat Buddy"
+                        info="Chat Buddy is a real-time messaging app developed using React, designed for seamless communication between users. It features an intuitive user interface with wallet integration for authentication. The app ensures a responsive, interactive messaging experience across various devices, making it easy for users to connect, chat, and manage their contacts effortlessly"
+                        smallInfo="Kindly select your name"
+                        functionName={createAccount}
+                        address={account}
+                    ></Model>
+                </div>
+            )}
+
+            {error===" "?" ":<Error error={error}/>}
         </>
     )
 }

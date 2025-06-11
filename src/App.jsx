@@ -7,7 +7,6 @@ const App=()=>{
     <>
       <ChatAppProvider>
         <NavBar />
-        <h1>Hi, This is the chatting Application</h1>
       </ChatAppProvider>
     </>
   )
