@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Filter.module.css';
+import './Filter.css';
 
 const Filter=()=>{
     return(

@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './UserCard.module.css';
+import './UserCard.css';
 
 const UserCard=()=>{
     return(

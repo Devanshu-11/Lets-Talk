@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Model.module.css';
+import './Model.css';
 
 const Model=()=>{
     return(

@@ -1,0 +1,184 @@
+/* Base Styles */
+.NavBar {
+    width: 100%;
+    background: linear-gradient(90deg, #4facfe 0%, #779d9e 100%); /* cool gradient blue */
+    color: #fff;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 100;
+}
+
+/* Flex container */
+.NavBar_box {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Right side container */
+.NavBar_box_right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+/* Desktop Menu */
+.NavBar_box_right_menu {
+    display: flex;
+    gap: 24px;
+}
+
+.NavBar_box_right_menu_items {
+    padding: 14px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.NavBar_box_right_menu_items:hover,
+.active_btn {
+    background-color: rgba(255 255 255 / 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.NavBar_box_right_menu_items_link {
+    color: white;
+    text-decoration: none;
+    user-select: none;
+}
+
+/* Connect Wallet Button */
+.NavBar_box_right_connect button {
+    background-color: #fff;
+    color: #0077ff;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 14px rgba(0, 119, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+.NavBar_box_right_connect button:hover {
+    background-color: #e6f0ff;
+    box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
+}
+
+/* Hamburger Icon */
+.NavBar_box_right_open {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    transition: transform 0.3s ease;
+    user-select: none;
+}
+
+.NavBar_box_right_open:hover {
+    transform: rotate(90deg);
+}
+
+/* Mobile Menu - slide down */
+.mobile_menu {
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    background: #4facfe;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    width: 240px;
+    border-radius: 12px;
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    z-index: 1500;
+    padding: 15px 0;
+    animation: slideDown 0.35s ease forwards;
+}
+
+/* Animation for dropdown */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mobile_menu_items {
+    padding: 14px 24px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 30px;
+    margin: 6px 16px;
+    text-align: center;
+    user-select: none;
+}
+
+.mobile_menu_items:hover,
+.active_btn {
+    background-color: rgba(255 255 255 / 0.3);
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.mobile_menu_items_link {
+    color: white;
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+/* Close Menu Button */
+.mobile_menu_btn {
+    margin-top: 14px;
+    text-align: center;
+}
+
+.mobile_menu_btn button {
+    background-color: #fff;
+    color: #0077ff;
+    padding: 12px 28px;
+    font-size: 1.05rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 6px 14px rgba(0, 119, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+}
+
+.mobile_menu_btn button:hover {
+    background-color: #e6f0ff;
+    box-shadow: 0 8px 20px rgba(0, 119, 255, 0.5);
+}
+
+/* Responsive Layout */
+@media screen and (max-width: 768px) {
+    .NavBar_box_right_menu {
+        display: none;
+    }
+
+    .NavBar_box_right_open {
+        display: block;
+    }
+}
