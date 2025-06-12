@@ -1,0 +1,98 @@
+/* Error Overlay */
+.Error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 77, 79, 0.15); /* soft light red overlay */
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+/* Error Box */
+.Error_box {
+    background-color: #ffffff;
+    border: 2px solid #ff4d4f;
+    border-radius: 20px;
+    padding: 35px 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    animation: slideUp 0.5s ease forwards;
+}
+
+/* Error Title */
+.h1_error {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #ff4d4f;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+/* Error Message */
+.error_message {
+    font-size: 1.15rem;
+    color: #333;
+    margin-top: 12px;
+    word-break: break-word;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .Error_box {
+        padding: 25px 20px;
+    }
+
+    .h1_error {
+        font-size: 1.8rem;
+    }
+
+    .error_message {
+        font-size: 1.05rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .Error_box {
+        padding: 20px 16px;
+    }
+
+    .h1_error {
+        font-size: 1.6rem;
+    }
+
+    .error_message {
+        font-size: 1rem;
+    }
+}

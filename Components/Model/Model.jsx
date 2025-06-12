@@ -6,7 +6,14 @@ import Loader from '../Loader/Loader.jsx';
 const Model=({openBox, title, head, info, smallInfo, functionName,address})=>{
     const [name, setName]=useState('');
     const [accountAddress, setAccountAddress]=useState('');
-    const {Loading}= useContext(ChatAppContext);
+    const {loading}= useContext(ChatAppContext);
+
+    const handleSubmit = () => {
+        console.log("Name entered:", name);
+        console.log("Account Address entered:", accountAddress);
+        console.log("Address placeholder:", address);
+        functionName({name,accountAddress});
+    };
 
     return(
         <div className='Model'>
@@ -19,7 +26,7 @@ const Model=({openBox, title, head, info, smallInfo, functionName,address})=>{
                 <small className='small_smallInfo'>{smallInfo}</small>
 
                 {
-                    Loading==true? (<Loader/>): (
+                    loading==true? (<Loader/>): (
                         <div className='Model_box_right_name'>
                             <div className='Model_box_right_name_info'>
                                 <input type='text' placeholder='Your Name' onChange={(e)=>setName(e.target.value)}></input>
@@ -31,11 +38,10 @@ const Model=({openBox, title, head, info, smallInfo, functionName,address})=>{
                             </div>
 
                             <div className='Navbar_box__right_name_button'>
-                                <button onClick={()=>functionName({name, accountAddress})}>
+                                <button onClick={handleSubmit}>
                                     {""}
                                     Submit
                                 </button>
-
 
                                 <button onClick={()=> openBox(false)}>
                                     {""}

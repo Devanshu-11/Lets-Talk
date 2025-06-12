@@ -34,8 +34,8 @@ export const ChatAppProvider=({children})=>{
             setAccount(connectAccount);
 
             // get the user name
-            const userName=await contract.getUsername(connectAccount);
-            setUserName(userName);
+            // const userName=await contract.getUsername(connectAccount);
+            // setUserName(userName);
 
             // get my friend list
             const friendLists=await contract.getMyFriendList();
@@ -69,8 +69,8 @@ export const ChatAppProvider=({children})=>{
     // create the account
     const createAccount=async({name, accountAddress})=>{
         try{
-            if(!name||!accountAddress){
-                return setError("Both name and account address are required to create an account, Please reload the browser");
+            if(!name){
+                return setError("Name is required to create an account, Please reload the browser");
             }
 
             const contract=await connectingWithTheContract();
